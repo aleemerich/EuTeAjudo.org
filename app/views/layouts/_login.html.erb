@@ -1,0 +1,23 @@
+<% if !session[:autenticado] %>
+<script>
+function reenvio()
+{
+	objForm = document.getElementById('form_autenticacao') 
+	if (objForm.email.value != '')
+	{
+			objForm.action = "/reenvio";
+			objForm.submit();
+	}
+	else
+		alert("Você precisa inserir seu e-mail no campo E-MAIL, caso contrário não há como ajudá-lo.", "EuTeAjudo.org");
+}
+</script>
+<%= form_tag('/autenticacao', :class => "searchform", :id => "form_autenticacao") %>
+                E-mail:<input id="email" name="email" class="textbox" type="text" />
+				Senha:<input name="senha" class="textbox" type="password" />
+  				<input class="button" value="Entrar" type="submit" />
+		<p align="right" style="font-size:xx-small"><br /><a href="#" onclick="javascript=reenvio()"><b>ESQUECEU SUA SENHA?</b></a></p>
+</form>		
+<% else %>
+<p>Amigo<%= session[:user].id %> | <a style="font-size:xx-small" href="/logoff/"><b>[SAIR]</b></a></p>
+<% end%>

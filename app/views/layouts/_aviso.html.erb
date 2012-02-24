@@ -1,0 +1,12 @@
+<div id="div_mensagem" align="center" style="position: absolute; z-index: 120; background: #CC0000; color: #FFFFFF; width: 95%; visibility: hidden">
+	<table width="100%" style="border:0px;background-color:transparent">
+		<tr>
+			<td id="td_mensagem_aviso" align="center" style="width:95%;border:0px;background-color:transparent">
+			 <%= flash[:notice] %>
+			</td>
+			<td align="center" style="width:5%;border:0px;background-color:transparent">
+				<img style="border:0px;background-color:transparent" src="/images/fechar3.jpg" onclick="mensagem(false)"/>
+			</td>
+		</tr>
+	</table>
+</div>	

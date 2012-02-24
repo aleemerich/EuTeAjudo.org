@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//PT-BR" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+
+<meta name="Description" content="Um lugar para ajudar pessoas que estão em situações emocionalmente difíceis" />
+<meta name="Keywords" content="amor, ajuda, pessoas, love, people, apoio, ombro amigo, consolo, abrigo" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="Distribution" content="Global" />
+<meta name="Author" content="Erwin Aligam - ealigam@gmail.com" />
+<meta name="Create" content="Arich - contato@arich.com.br" />
+<meta name="Robots" content="index,follow" />
+
+<%= javascript_include_tag 'euteajudo' %>
+<%= stylesheet_link_tag 'euteajudo' %>
+
+<title>EuTeAjudo.org - Um lugar para ajudar pessoas que estão em situações emocionalmente difíceis</title></head>
+<%= render :partial => "/layouts/aviso" %>
+<body onload="mensagem(<%= flash[:notice].blank? ? 'false' : 'true' %>)">
+<!-- wrap starts here -->
+<div id="wrap">
+
+	<div id="top-bg"></div>
+				
+	<!--header -->
+	<div id="header">			
+				
+		<h1 id="logo-text"><a href="/" title="">EuTe<span>Ajudo</span></a></h1>		
+		<p id="slogan">Ajudando a ajudar você</p>		
+			
+		<div id="header-links">
+			<%= render :partial => "/layouts/login" %>	
+		</div>		
+					
+	</div>	
+	<!--header ends-->
+	<% if request.url == 'http://euteajudo.org/' or request.url == 'http://www.euteajudo.org/'%> <div id="header-photo"></div> <% end %>
+	<%= render :partial => "/layouts/menu" %>		
+
+<%= yield %>
+
+	<!-- footer starts -->		
+	<div id="footer-wrap">
+	
+		<div id="footer-bottom">		
+			
+			<p>
+			&copy; 2011 <strong>EuTeAjudo.org</strong> | 
+			Design de: <a href="http://www.styleshout.com/">styleshout</a> | 
+			Criado por: <a href="http://www.arich.com.br/">Arich</a> | 
+
+   		</p>		
+			
+		</div>	
+
+<!-- footer ends-->
+</div>
+<!-- wrap ends here -->
+</div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15127404-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

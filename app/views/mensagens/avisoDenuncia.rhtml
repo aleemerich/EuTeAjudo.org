@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//BR"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+	  <meta http-equiv="Content-Type" content="text/html">
+	  <title>Aviso de denuncia</title>
+  </head>
+  <body>
+<p><b>Amigo que criou a denúncia =</b> <%= @amigo %></p>
+<p><b>Amigo denunciado =</b> <%= @amigoD %></p>
+<p><b>Motivo da denúncia fornecido pelo amigo que denunciou:</b></p>
+=======================<br />
+<p><i>"<%= @texto %>"</i></p>
+=======================<br /> 
+<p><b>Texto do Dialogo (com TAGs HTML) em que foi baseado a denúncia: </b></p>
+=======================<br />
+<%= @dialogoT %>
+=======================<br />
+</body>
+</html>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  amigo_id: 1
+  conversa_id: 1
+  flagBloqueio: 1
+
+two:
+  amigo_id: 1
+  conversa_id: 1
+  flagBloqueio: 1

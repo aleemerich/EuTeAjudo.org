@@ -1,0 +1,23 @@
+<%=  javascript_include_tag 'ckeditor' %>
+<div id="content-wrap">
+		<div id="mainInternal" >
+	    <h2>Criando sua nova conversa</h2>			
+			<p>Para dar in&iacute;cio a sua nova conversa, preencha os dados abaixo.</p>
+		  <% form_for @conversa, :url => { :action => "create" } do |f| %>
+		  <%= f.hidden_field :amigo_id, :value => session[:user].id%>
+			  <p>
+              	<label>Assunto</label>
+                <%= f.text_field :assunto %>
+			    <label>Sua fala</label>
+			    <%= text_area(:dialogo, :texto) %>
+					<script type="text/javascript">
+							CKEDITOR.replace( 'dialogo_texto');
+					</script>
+				<br />
+             	<%= f.check_box :flagColaboracaoUnica%> Só quero a ajuda de um amigo apenas.
+			    <br /><br />
+			    <input class="button" value="Enviar" type="submit" />
+	        </p>
+		  <% end %>
+		</div>
+	</div>

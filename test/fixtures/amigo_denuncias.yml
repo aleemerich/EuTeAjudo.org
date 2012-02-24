@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  amigo_id: 1
+  amigo_id_denunciado: 1
+  conversa_id: 1
+  texto: MyText
+
+two:
+  amigo_id: 1
+  amigo_id_denunciado: 1
+  conversa_id: 1
+  texto: MyText

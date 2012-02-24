@@ -1,0 +1,103 @@
+<% if params[:tipo] == "ajuda" %>
+<div id="content-wrap" style="visibility:visible; position:inherit">
+	  <div id="mainQuem" >	
+  		<h2>Suas Conversas Ativas</h2>			
+		<table width="98%">
+			  <tr>
+			    <th width="106" class="first"><strong>Criado em</strong></th>
+			    <th width="374">Assunto</th>
+			    <th width="99">A&ccedil;&atilde;o</th>
+        	  </tr>
+	<% @conversas.each do |ajuda| %>
+			  <tr class="row-a">
+			    <td class="first"><%= ajuda.created_at.strftime("%d/%m/%Y") %></td>
+			    <td><a href="/conversa/<%= ajuda.id%>"><% if ajuda.flagNovidade == '1' %><b>[N]&nbsp;</b><% end %><%= ajuda.assunto %></a></td>
+			    <td align="center"><a href="/conversa/<%= ajuda.id%>">Ver</a>&nbsp;|&nbsp;<a href="/conversa/close/<%= ajuda.id %>" onclick="aviso(<%= ajuda.id %>)">Encerrar</a></td>
+		      </tr>
+	<% end %>
+				<script>
+					function aviso(id)
+					{
+						if (confirm("Deseja mesmo encerrar essa conversa?")) 
+							window.location = "/conversas/close/"+id;
+					}
+				</script>
+	    </table>
+		<p style="font-size:xx-small;margin-top:-15px"><b>[N]</b> = Novidades</p>
+  		<h2>Suas Conversas Encerradas</h2>			
+		<table width="98%">
+			  <tr>
+			    <th width="106" class="first"><strong>Criado em</strong></th>
+			    <th width="374">Assunto</th>
+			    <th width="99">A&ccedil;&atilde;o</th>
+        	  </tr>
+	<% @conversasEncerradas.each do |ajuda| %>
+			  <tr class="row-a">
+			    <td class="first"><%= ajuda.created_at.strftime("%d/%m/%Y") %></td>
+			    <td><a href="/conversa/<%= ajuda.id%>"><%= ajuda.assunto %></a></td>
+			    <td align="center"><a href="/conversa/<%= ajuda.id%>">Ver</a>&nbsp;|&nbsp;<a href="/conversa/open/<%= ajuda.id %>">Ativar</a></td>
+		      </tr>
+	<% end %>
+	    </table>
+		<p>&nbsp;</p>
+        <p class="post-footer" align="center"style="width:300px"><a href="/conversa/new" class="comments" style="font-size:large"><b>Quero pedir ajuda</b></a></p>
+        <p>&nbsp;</p>
+        </div>
+        <div id="sidebarC">
+			<h3>Amigos Bloqueados</h3>
+			<ul class="sidemenu">
+	<% @amigosBloqueados.each do |amigo|%>
+	            <li><a href="/conversa/block/<%= amigo.amigo_id_bloq %>">[D]</a> Amigo<%= amigo.amigo_id_bloq %> </li>
+	<% end %>
+			</ul>
+            <br />
+          <span style="font-size:xx-small"><b>[D]</b> = Clique para desbloquear</span>
+	  </div>
+   	</div>
+<% elsif params[:tipo] == "apoio" %>
+<div id="content-wrap" style="visibility:visible; position:inherit">
+	  <div id="mainInternal" >	
+  		<h2>Conversas Ativas que participa</h2>			
+		<table width="98%">
+			  <tr>
+			    <th width="106" class="first"><strong>Criado em</strong></th>
+			    <th width="374">Assunto</th>
+			    <th width="99">A&ccedil;&atilde;o</th>
+        	  </tr>
+	<% @conversasApoio.each do |ajuda| %>
+			  <tr class="row-a">
+			    <td class="first"><%= ajuda.created_at.strftime("%d/%m/%Y") %></td>
+			    <td><a href="/conversa/<%= ajuda.id%>"><% if ajuda.flagNovidade == '1' %><b>[N]&nbsp;</b><% end %><%= ajuda.assunto %></a></td>
+			    <td align="center"><a href="/conversa/<%= ajuda.id%>">Ver</a>&nbsp;|&nbsp;<a href="/conversa/exit/<%= ajuda.id %>" onclick="aviso(<%= ajuda.id %>)">Sair</a></td>
+				<script>
+					function aviso(id)
+					{
+						if (confirm("Deseja mesmo sair dessa conversa?")) 
+							window.location = "/conversa/exit/"+id;
+					}
+				</script>
+		      </tr>
+	<% end %>
+	    </table>
+		<p style="font-size:xx-small;margin-top:-15px"><b>[N]</b> = Novidades</p>
+  		<h2>Conversas Encerradas que participa</h2>			
+		<table width="98%">
+			  <tr>
+			    <th width="106" class="first"><strong>Criado em</strong></th>
+			    <th width="374">Assunto</th>
+			    <th width="99">A&ccedil;&atilde;o</th>
+        	  </tr>
+	<% @conversasApoioEncerradas.each do |ajuda| %>
+			  <tr class="row-a">
+			    <td class="first"><%= ajuda.created_at.strftime("%d/%m/%Y") %></td>
+			    <td><a href="/conversa/<%= ajuda.id%>"><%= ajuda.assunto %></a></td>
+			    <td align="center"><a href="/conversa/<%= ajuda.id%>">Ver</a></td>
+		      </tr>
+	<% end %>
+	    </table>
+		<p>&nbsp;</p>
+        <p class="post-footer" align="center"style="width:300px"><a href="/conversas/help/0" class="comments" style="font-size:large"><b>Quero ajudar um amigo</b></a></p>
+        <p>&nbsp;</p>
+        </div>
+   	</div>
+<% end %>

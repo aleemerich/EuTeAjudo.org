@@ -1,0 +1,11 @@
+	<div  id="nav">
+		<ul>
+			<li <% if request.url == 'http://euteajudo.org/' or request.url == 'http://www.euteajudo.org/' %> id="current" <% end %>><a href="/">Home</a></li>
+<% if session[:autenticado] %>
+			<li <%= (request.url.include? 'ajuda') ? 'id="current"':'' %>><a href="/conversas/ajuda/">Seus espaço</a></li>
+			<li <%= (request.url.include? 'apoio') ? 'id="current"':'' %>><a href="/conversas/apoio/">Pessoas que ajudo</a></li>
+			<li <%= (request.url.include? 'amigo') ? 'id="current"':'' %>><a href="/amigo/<%= session[:user].id %>">Dados pessoais</a></li>
+<% end%>
+			<li <%= (request.url.include? 'quemsomos') ? 'id="current"':'' %>><a href="/quemsomos/">Quem somos</a></li>
+		</ul>
+	</div>	

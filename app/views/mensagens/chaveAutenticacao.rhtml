@@ -1,0 +1,19 @@
+<html>
+  <head>
+	  <meta http-equiv="Content-Type" content="text/html">
+	  <title>Confirmação de Cadastro</title>
+  </head>
+  <body>
+	<h2><b>Olá amigo <%= @nomeCompleto %>!</b></h2>
+	<p>Agradecemos imensamente seu cadastro no site Euteajudo.org e queremos você conosco o mais breve possível. A parir de agora, no site EuTeAjudo.org você será conhecido como:</p>
+	<h2><b>Amigo<%= @id %></b></h2>
+	<p>Antes precisamos que você confirme seu cadastro clicando no endereco abaixo:</p>
+	<p><h3><b><a href="http://euteajudo.org/validacao/<%= @stringValidacao %>">http://euteajudo.org/validacao/<%= @stringValidacao %></a></h3></b></p> <br />
+	<p>	Caso não consiga, por favor, tente recortar o endereco acima, colar na janela onde você digita o endereço de site no seu navegador e dar ENTER. Se mesmo assim você não conseguiu, envie um e-mail para: <a href="mailto:suporte@euteajudo.org">suporte@euteajudo.org</a>.</p> <br />
+	<p> Muito obrigado por você estar conosco e te esperamos no site EuTeAjudo.org.</p>
+	<br />
+	<br />
+	<h3>EuTeAjudo.org</h3>
+	Ajudando a ajudar você <br /> <br />
+  </body>
+</html>

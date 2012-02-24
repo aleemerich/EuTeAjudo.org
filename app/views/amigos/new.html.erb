@@ -1,0 +1,120 @@
+<%=  javascript_include_tag 'euteajudo_lightbox' %>
+	<!-- content-wrap starts -->
+	<script>
+		function aceitaTermos()
+		{	
+			window.scrollBy(-1,-1000)
+			ativaFundo();
+			document.getElementById('div_termos').style.visibility = "visible";
+		}
+
+	</script>
+	<div id="content-wrap">
+		<div id="mainInternal" >
+		<% if params[:tipo] == "ajuda" %>
+			<h2>Ol&aacute; novo amigo</h2>			
+			<p>N&oacute;s adoramos receber novos amigos, principalmente aqueles que buscam ajuda. Esse espa&ccedil;o foi criado pra voc&ecirc;. Unica e exclusivamente pra voc&ecirc;! Seja muito bem vindo e sinta-se a vontade para abrir seu cora&ccedil;&atilde;o com a gente. N&atilde;o vemos a hora de poder	falar com voc&ecirc;!</p>
+		  	<p>Como ajudar n&atilde;o precisa de cor, sexo, ra&ccedil;a ou situa&ccedil;&atilde;o financeira, voc&ecirc; n&atilde;o ser&aacute; identificado em nosso sistema. A pessoa que falar com voc&ecirc; tamb&eacute;m n&atilde;o ser&aacute; identificada. Isso serve para preservar a integridade de todos, pois o amor n&atilde;o precisa disso pra ser amor, n&atilde;o &eacute; mesmo?</p>
+		  	<p>Contudo, para fins adminsitrativos precisamos que preecha apenas seu nome, e-mail e uma senha, mas prometemos que isso n&atilde;o ser&aacute; divulgado dentro do site em hip&oacute;tese nenhuma, ok? Vamos l&aacute;...</p>
+		<% elsif params[:tipo] == "ajudante" %>
+			<h2>Ol&aacute; novo amigo</h2>
+          	<p>Como &eacute; bom saber que existem pessoas de bom cora&ccedil;&atilde;o nesse mundo...&Eacute; por isso que viver vale a pena, gra&ccedil;as a pessoas como voc&ecirc;. Voc&ecirc; &eacute; a alma desse site, pois &eacute; sua ajuda que mantem a engrenagem da vida funcionando!</p>
+          	<p>Mas temos que ter responsabilidade com o que vamos falar com aqueles que precisam! Palavras erradas podem at&eacute; ter fins tr&aacute;gicos, por isso cuidado com conselhos e dicas. Trate todos com muito amor e, se ficar aborrecido com um amigo, d&ecirc; um tempo para voc&ecirc; se acalmar e volte depois para falar com eles com amor.</p>
+          	<p>Por quest&otilde;es administrativas, voc&ecirc; ter&aacute; que preencher todos os campos deste formul&aacute;rio. Isso &eacute; para a seguran&ccedil;aa daqueles que queremos ajudar. Vamos l&aacute;...</p>
+         <% end %> 	
+		 <script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-1.2-utf8.js"></script>
+      	 <% form_for @amigo, :class => "searchform", :id => "searchform" do |f| %>
+				<br />
+				<p>* Informa&ccedil;&otilde;es obrigat&oacute;rias<br /></p>
+				<h3>Dados B&aacute;sicos</h3>
+					<%= hidden_field_tag "tipo", params[:tipo]%>
+	            	<p>Nome Completo:<br /><%= f.text_field :nomeCompleto %>*</p> 
+	           	  	<p>E-mail:<br /><%= f.text_field :email %>*</p>
+					<p>Senha:<br /><%= f.password_field :senha %>*</p>
+					<p>Estado:<br /><%= f.text_field :estado %>*</p>
+					<p>Cidade <span style="font-size:xx-small"><i>(as capitais estão em primeiro)</i></span>:<br /><%= f.text_field :cidade %>*</p>
+					<p><%= f.check_box :flagAvisos %> Desejo receber um e-mail de aviso sempre que alguma conversa que eu estiver participando tiver novidades.</p>
+						<script language="JavaScript" type="text/javascript" charset="utf-8">
+					        new dgCidadesEstados({
+					          cidade: document.getElementById('amigo_cidade'),
+					          estado: document.getElementById('amigo_estado'),
+							  change: true
+					        })
+				      	</script>
+			<% if params[:tipo] == "ajudante" or session[:autenticado] %>
+				   	<p><strong>Ajudar um amigo &eacute; coisa s&eacute;ria!</strong> Por isso pedimos que forne&ccedil;a todos os dados abaixo para que possamos garantir minimamente que voc&ecirc; possa ser contactado em caso de for&ccedil;a maior.</p>
+	            	<p>CPF:<br /><%= f.text_field :cpf %></p>
+					<p>DDD+Telefone: <span style="font-size:xx-small"><i>formato (dd)xxxx-xxxx</i></span><br /><%= f.text_field :telefone %></p>
+	              	<p>Profiss&atilde;o:<br /><%= f.text_field :profissao %></p> 
+			<% end %>
+			<% if params[:tipo].blank? %>
+	            	<p><%= f.submit "Enviar", :class => "button" %></p>
+			<% else %>
+					<p><input class="button" value="Entrar" type="button" onclick="aceitaTermos()"/></p>
+			<% end %>
+		<% end %>
+		</div>
+		<% if !params[:tipo].blank? %>
+		<div id="div_termos">
+		  <h1>VOC&Ecirc; PRECISA LER ISSO ANTES DE CONTINUAR</h1>
+		  <p align="justify"> Este site se destina a fomentar a troca de mensagens entre as pessoas com o intuito de ajudar pessoas que precisam de apoio, principalmente psicol&oacute;gico. <span style="color:#FF7174;font-size:larger;">Contudo, o site N&Atilde;O &Eacute; RESPONS&Aacute;VEL PELAS MENSAGENS AQUI POSTADAS NEM PELAS ORIENTA&Ccedil;&Otilde;ES OFERECIDAS!</span></p>
+		  <p align="justify">&Eacute; importante que voc&ecirc; tenha consci&ecirc;ncia que <span style="color:#FF7174;font-size:larger;">NADA do que &eacute; dito aqui </span>tem rela&ccedil;&atilde;o ou expressa os desejos e anseios da equipe do EuTeAjudo.org ou de seus fomentadores.</p>
+		  <p align="justify"> Se essas condi&ccedil;&otilde;es est&atilde;o de bom grado para voc&ecirc; e tamb&eacute;m concorda com os termos de condi&ccedil;&otilde;es e usos desse website apresentados abaixo, d&ecirc; seu aceite no final desta p&aacute;gina e seja bem vindo a nossa comunidade.  <span style="color:#FF7174;font-size:larger;">Caso contr&aacute;rio, por favor, n&atilde;o use o EuTeAjudo.org!</span><br />		  </p>
+  		  <p>&nbsp;</p>
+  		  <h1>TERMOS E CONDI&Ccedil;&Otilde;ES DE USO DESTE WEBSITE</h1>
+		  <p align="justify">Este website &eacute; oferecido a voc&ecirc; sob a condi&ccedil;&atilde;o de que sejam aceitos os Termos e Condi&ccedil;&otilde;es de uso aqui apresentados. O uso deste website representa sua concord&acirc;ncia com todos os termos, condi&ccedil;&otilde;es e notifica&ccedil;&otilde;es, que podem ser alterados ao longo do tempo.</p>
+		  <p align="justify"><strong>DIREITOS RESERVADOS</strong></p>
+		  <p align="justify">O site EuTeAjudo.org&nbsp;e seus logotipos s&atilde;o marcas registradas.</p>
+		  <p align="justify"><strong>PROPRIEDADE INTELECTUAL</strong></p>
+		  <p align="justify">Este website, suas p&aacute;ginas, as telas que apresentem as p&aacute;ginas, as informa&ccedil;&otilde;es e os materiais nelas contidos e sua distribui&ccedil;&atilde;o e composi&ccedil;&atilde;o, salvo se indicado de outra forma, s&atilde;o de propriedade da  EuTeAjudo.org. Todos os direitos s&atilde;o protegidos por direitos autorais, marcas registradas e marcas de servi&ccedil;os, tratados internacionais e/ou outros direitos exclusivos e leis do Brasil e de outros pa&iacute;ses. Voc&ecirc; concorda em observar todas as leis aplic&aacute;veis, assim como quaisquer notifica&ccedil;&otilde;es ou restri&ccedil;&otilde;es adicionais contidas no website.</p>
+		  <p align="justify"><strong>USO PESSOAL</strong></p>
+		  <p align="justify">Sua elegibilidade para determinados produtos e servi&ccedil;os est&aacute; sujeita &agrave; determina&ccedil;&atilde;o e aceita&ccedil;&atilde;o da EuTeAjudo.org. Este website &eacute; para seu uso pessoal e n&atilde;o para uso comercial. Salvo se expressamente permitido, voc&ecirc; n&atilde;o poder&aacute; modificar, copiar, distribuir, transmitir, exibir, executar, reproduzir, publicar, licenciar, criar trabalhos derivados, transferir ou vender as informa&ccedil;&otilde;es, programas de computador (software), produtos ou servi&ccedil;os obtidos neste website.</p>
+		  <p align="justify"><strong>USO ILEGAL OU PROIBIDO</strong></p>
+		  <p align="justify">Como condi&ccedil;&atilde;o para o uso deste website, voc&ecirc; garante &agrave;&nbsp;EuTeAjudo.org e reconhece que o website ou o seu conte&uacute;do n&atilde;o ser&atilde;o utilizados para nenhum prop&oacute;sito que seja ilegal ou proibido por esses Termos e Condi&ccedil;&otilde;es, notifica&ccedil;&otilde;es ou por qualquer legisla&ccedil;&atilde;o aplic&aacute;vel.</p>
+		  <p align="justify"><strong>LINKS PARA SITES DE TERCEIROS</strong></p>
+		  <p align="justify">Este website pode conter links para sites operados por terceiros n&atilde;o relacionados com a EuTeAjudo.org. Tais links s&atilde;o fornecidos somente para sua conveni&ecirc;ncia e informa&ccedil;&atilde;o. A EuTeAjudo.org n&atilde;o controla esses sites e n&atilde;o assume qualquer responsabilidade em rela&ccedil;&atilde;o ao conte&uacute;do ou ao uso dos mesmos. O fato de a EuTeAjudo.org incluir links para tais sites n&atilde;o significa qualquer endosso do material ali contido e nem associa&ccedil;&atilde;o com seus operadores ou com suas opera&ccedil;&otilde;es.</p>
+		  <p align="justify"><strong>AUS&Ecirc;NCIA DE DIREITO &Agrave; PRIVACIDADE</strong></p>
+		  <p align="justify">Ao enviar mensagens, carregar arquivos, inserir dados ou efetuar qualquer outra forma de comunica&ccedil;&atilde;o por meio deste website, voc&ecirc; estar&aacute; concedendo &agrave; EuTeAjudo.org permiss&atilde;o para:</p>
+		  <p align="justify">- Utilizar, para qualquer fim, id&eacute;ias, conceitos, conhecimentos t&eacute;cnicos ou t&eacute;cnicas contidos em informa&ccedil;&otilde;es prestadas por visitantes deste site;&nbsp;<br />
+		    - Utilizar, modificar, copiar, distribuir, transmitir, exibir publicamente, reproduzir, publicar, sublicenciar, criar trabalhos derivados, transferir ou vender tais comunica&ccedil;&otilde;es;&nbsp;<br />
+		    - Sublicenciar a terceiros o direito pleno de exercer quaisquer dos direitos acima, concedidos em rela&ccedil;&atilde;o &agrave; comunica&ccedil;&atilde;o;&nbsp;<br />
+		    - Explorar quaisquer direitos exclusivos sobre a referida comunica&ccedil;&atilde;o, inclusive, entre outros, direitos previstos em leis de direitos autorais, marcas registradas, marcas de servi&ccedil;o ou de patentes em qualquer jurisdi&ccedil;&atilde;o pertinente.</p>
+		  <p align="justify"><strong>SENHAS</strong></p>
+		  <p align="justify">Se voc&ecirc; recebeu uma senha ou um nome de usu&aacute;rio para acessar se&ccedil;&otilde;es restritas deste website, voc&ecirc; tem a responsabilidade de proteger a confidencialidade de sua senha, inclusive para prevenir o uso n&atilde;o autorizado da mesma. Qualquer reprodu&ccedil;&atilde;o, distribui&ccedil;&atilde;o, publica&ccedil;&atilde;o, transmiss&atilde;o por quaisquer meios a terceiros, ou o uso de qualquer informa&ccedil;&atilde;o contida no website por qualquer usu&aacute;rio, atrav&eacute;s do uso de nomes de usu&aacute;rios ou senhas, de qualquer maneira ou forma, sem a nossa autoriza&ccedil;&atilde;o expressa, &eacute; estritamente proibido.</p>
+		  <p align="justify"><strong>ALTERA&Ccedil;&Otilde;ES</strong></p>
+		  <p align="justify">Reservamo-nos o direito de modificar ou alterar estes Termos e Condi&ccedil;&otilde;es de qualquer forma. As altera&ccedil;&otilde;es destes Termos e Condi&ccedil;&otilde;es ser&atilde;o disponibilizadas no website e ser&atilde;o v&aacute;lidas a partir do momento de sua publica&ccedil;&atilde;o, independentemente de terem sido vistas pelo usu&aacute;rio. Parte-se do princ&iacute;pio que os usu&aacute;rios aceitaram qualquer altera&ccedil;&atilde;o, se continuarem a acessar o website depois daquele momento.</p>
+		  <p align="justify"><strong>ISEN&Ccedil;&Atilde;O DE RESPONSABILIDADE</strong></p>
+		  <p align="justify">A EuTeAjudo.org e seus fornecedores n&atilde;o garantem a exatid&atilde;o, adequa&ccedil;&atilde;o, conveni&ecirc;ncia ou integralidade das informa&ccedil;&otilde;es e materiais contidos no site e expressamente declaram sua isen&ccedil;&atilde;o de responsabilidade por erros ou omiss&otilde;es nessas informa&ccedil;&otilde;es e materiais, assim como por todas as garantias impl&iacute;citas e condi&ccedil;&otilde;es de comercializa&ccedil;&atilde;o, adequa&ccedil;&atilde;o a um prop&oacute;sito espec&iacute;fico, propriedade e n&atilde;o-viola&ccedil;&atilde;o.</p>
+		  <p><strong>LIMITA&Ccedil;&Atilde;O DE RESPONSABILIDADE</strong></p>
+		  <p align="justify">Em nenhuma circunst&acirc;ncia, a EuTeAjudo.org ser&aacute; respons&aacute;vel por quaisquer danos, incluindo, entre outros:<br />
+		    - danos diretos ou indiretos, especiais, incidentais ou imprevistos, perdas ou despesas, em decorr&ecirc;ncia do uso ou do desempenho deste website,<br />
+		    - pela demora ou incapacidade de usar o website,<br />
+		    - por perda ou uso inadequado de informa&ccedil;&otilde;es enviadas por meio deste website,<br />
+		    - a presta&ccedil;&atilde;o de servi&ccedil;os ou impossibilidade de prest&aacute;-los,<br />
+		    - perda de dados ou lucros, v&iacute;rus de computador, falha da linha ou do sistema,&nbsp;<br />
+		    - por quaisquer informa&ccedil;&otilde;es, software, produtos, servi&ccedil;os e gr&aacute;ficos obtidos atrav&eacute;s deste website, mesmo que a BASE64 ou qualquer um de seus fornecedores tenha sido advertido sobre a possibilidade de tais danos.<br />
+		    Os links para outros recursos da Internet devem ser acessados por sua pr&oacute;pria conta e risco.</p>
+		  <p align="justify"><strong>RESTRI&Ccedil;&Atilde;O DE ACESSO</strong></p>
+		  <p align="justify">A EuTeAjudo.org se reserva o direito de negar, a seu exclusivo crit&eacute;rio, o acesso de qualquer usu&aacute;rio a este website ou a qualquer parte dele, sem aviso pr&eacute;vio.</p>
+		  <p align="justify"><strong>ACORDO INTEGRAL</strong></p>
+		  <p align="justify">O presente contrato constitui o entendimento integral entre o usu&aacute;rio e a EuTeAjudo.org com respeito a este website e substitui todas as comunica&ccedil;&otilde;es e propostas anteriores ou simult&acirc;neas, eletr&ocirc;nicas, verbais ou por escrito. Uma vers&atilde;o impressa deste contrato e de qualquer notifica&ccedil;&atilde;o por forma eletr&ocirc;nica ser&aacute; admiss&iacute;vel em procedimentos judiciais ou administrativos, baseados neste contrato ou a este relativos, na mesma extens&atilde;o e sujeitos &agrave;s mesmas condi&ccedil;&otilde;es que outros documentos e registros comerciais originalmente gerados e mantidos em forma impressa.</p>
+		  <p align="justify"><strong>DIVISIBILIDADE</strong></p>
+		  <p align="justify">Se qualquer parte deste contrato for considerada inv&aacute;lida ou inexeq&uuml;&iacute;vel de acordo com a legisla&ccedil;&atilde;o aplic&aacute;vel, ent&atilde;o (i) primeiro, a cl&aacute;usula inv&aacute;lida ou inexeq&uuml;&iacute;vel ser&aacute; substitu&iacute;da por uma cl&aacute;usula v&aacute;lida e exeq&uuml;&iacute;vel que seja mais pr&oacute;xima da inten&ccedil;&atilde;o da cl&aacute;usula original e o restante do contrato continuar&aacute; em vigor; ou (ii) segundo, as cl&aacute;usulas determinadas como inv&aacute;lidas, nulas ou inexeq&uuml;&iacute;veis por qualquer tribunal de jurisdi&ccedil;&atilde;o competente ser&atilde;o separadas e as cl&aacute;usulas remanescentes continuar&atilde;o exeq&uuml;&iacute;veis dentro dos limites permitidos por lei.</p>
+		  <p align="justify"><strong>JURISDI&Ccedil;&Atilde;O</strong></p>
+		  <p align="justify">Este contrato ser&aacute; regido e interpretado de acordo com as leis da Rep&uacute;blica Federativa do Brasil, sem refer&ecirc;ncia &agrave; doutrina que possibilita a escolha de foro. Voc&ecirc;, neste ato, consente em submeter-se &agrave; jurisdi&ccedil;&atilde;o exclusiva do Foro da Comarca de S&atilde;o Paulo, Estado de S&atilde;o Paulo, em rela&ccedil;&atilde;o ao in&iacute;cio, prosseguimento ou continua&ccedil;&atilde;o de qualquer reivindica&ccedil;&atilde;o.</p>
+		  <p align="justify"><br />
+		    Todos os direitos n&atilde;o declarados expressamente neste material est&atilde;o reservados.</p>
+		  <p align="justify">&nbsp;</p>
+		  <p align="center">		
+			<a href="#" onclick="enviando()" class="post-footer"><b>ACEITO</b></a>&nbsp;&nbsp;<a href="/" class="post-footer"><b>NÃO ACEITO</b></a> </p>
+		          <p>&nbsp;</p>
+		</div>
+<script>
+function enviando()
+{
+	var formulario = document.getElementById('new_amigo');
+	formulario.submit();
+}
+</script>
+		<% end %>
+   	</div>

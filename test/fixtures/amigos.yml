@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nomeCompleto: MyString
+  email: MyString
+  senha: MyString
+  cidade: MyString
+  estado: MyString
+  cpf: MyString
+  telefone: MyString
+  profissao: MyString
+  nivelPermissao: 1
+  stringValidacao: MyString
+  dataValidacao: 2011-06-16 15:47:34
+  reenvioSenha: 1
+  statusBloqueio: 1
+  flagAvisos: 1
+
+two:
+  nomeCompleto: MyString
+  email: MyString
+  senha: MyString
+  cidade: MyString
+  estado: MyString
+  cpf: MyString
+  telefone: MyString
+  profissao: MyString
+  nivelPermissao: 1
+  stringValidacao: MyString
+  dataValidacao: 2011-06-16 15:47:34
+  reenvioSenha: 1
+  statusBloqueio: 1
+  flagAvisos: 1

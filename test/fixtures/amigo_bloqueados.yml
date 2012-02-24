@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  amigo_id: 1
+  amigo_id_bloq: 1
+
+two:
+  amigo_id: 1
+  amigo_id_bloq: 1

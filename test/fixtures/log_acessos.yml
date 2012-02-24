@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ip: MyText
+  email: MyText
+  senha: MyText
+  status: MyText
+
+two:
+  ip: MyText
+  email: MyText
+  senha: MyText
+  status: MyText

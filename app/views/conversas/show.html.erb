@@ -1,0 +1,84 @@
+<%=  javascript_include_tag 'ckeditor' %>
+<%=  javascript_include_tag 'euteajudo_denuncia' %>
+<%=  javascript_include_tag 'euteajudo_bloqueio' %>
+<%=  javascript_include_tag 'euteajudo_participacao_outros' %>
+<%=  javascript_include_tag 'euteajudo_lightbox' %>
+<%=  javascript_include_tag 'euteajudo_ajax' %>
+	<div id="content-wrap">
+		<div id="mainInternal" >	
+  			<h2><%=@conversa.assunto %></h2>			
+			<p><span class="post-info">Criado em <%=@conversa.created_at.to_datetime.strftime("%d/%m/%Y %HH %MM") %></span></p>
+	<% if @conversa.status != 2%>
+		  	<% form_for Dialogo.new, :url => { :action => "show" } do |f| %>
+			  <p>
+				<%= f.hidden_field :amigo_id, :value => session[:user].id%>
+				<%= f.hidden_field :conversa_id, :value => @conversa.id%>
+			    <label>Seu coment&aacute;rio</label>
+			    <%= f.text_area :texto%>
+					<script type="text/javascript">
+							CKEDITOR.replace( 'dialogo_texto');
+					</script>
+			    <br />
+			    <%= f.submit 'Enviar'%>
+	        </p>
+		 	<% end %>
+	<% end %>
+	<% if @conversa.amigo_id == session[:user].id %><br/>
+			<h1><span class="post-footer">
+		<% if @conversa.status != 2%>
+					<a href="#" onclick="aviso(<%= @conversa.id %>)">Encerrar essa conversa</a> | 
+					<a id="participacao_de_outros" href="#" onclick="participcao(<%= @conversa.id %>)" class="comments"> 
+						<% if @conversa.flagColaboracaoUnica == 0 %> 
+								Bloquear a participa&ccedil;&atilde;o de outros amigos 
+						<% else %>
+								Desbloquear a participa&ccedil;&atilde;o de outros amigos
+						<% end %>
+					</a>
+		<% else %>
+					<a href="/conversa/open/<%= @conversa.id %>" class="readmore">Ativar essa conversa</a>
+		<% end %>
+			</span></h1>
+	<% elsif @conversa.status != 2 %>
+			<h1><span class="post-footer">
+					<a href="/conversa/exit/<%= @conversa.id %>" class="readmore">Abandonar essa conversa</a>
+			</span></h1>
+	<% end %>
+			<% @dialogos.each do |d| %>
+          	<h1>&nbsp;</h1>
+          	<h1>Amigo<%= d['amigo_id']%> disse:</h1>
+          	<p class="post-info">Postado dia <%= d['created_at'].to_datetime.strftime("%d/%m/%Y %HH:%MM") %></p>
+          	<div style="padding-left: 10px; padding-right: 15px"><%= d['texto']%></div><br />
+          	<p id="rodape<%= d['id']%>" class="post-footer"> 
+				<% if d['amigo_id'].to_i != session[:user].id and @conversa.status != 2 %>
+						<% if d['flagBloqueioGeral'].blank? and @conversa.amigo_id == session[:user].id %> 
+							<span id="span<%= d['id']%>"><a onclick="bloqueio('abrir', <%= d['amigo_id'] %>, 'span<%= d['id'] %>')" class="readmore">Bloquear amigo</a> | </span>
+						<% else %>
+							<span class="readmore">Bloquear amigo</span>
+						<% end %>
+						<a onclick="denuncia('abrir', <%= d['id'] %>, <%= d['amigo_id'] %>, 'rodape<%= d['id'] %>')" class="readmore">Denunciar abuso</a> | 
+				<% end %> <span class="date">Postado dia <%= d['created_at'].to_datetime.strftime("%d/%m/%Y %HH %MM") %></span></p>
+			<% end %>
+		  <p>&nbsp;</p>
+		  <p>&nbsp;</p>
+        </div>
+   	</div>
+<div id="div_denuncia" style="position: absolute; width: 400px; height: 100; background: #DCDCDC; border-top: 4px solid #555555; border-bottom: 4px solid #555555;z-index: 120; padding: 10px; visibility:hidden" align="center">	
+    <h1>Atenção</h1>			
+    <blockquote>Denunciar um amigo é coisa séria! Se tiver dúvidas, veja antes <a href="/quemsomos/">como isso funciona</a>. Caso contrário, preencha abaixo os motivos que levaram você a realizar essa ação.</blockquote>
+	<%= form_tag('/') %>
+	<textarea id="txt_denuncia"></textarea>
+	</form>
+	<br />
+	<input id="btnEnviar" onclick="denuncia('enviar')" type="button" value="Enviar" /> | 
+	<input onclick="denuncia('fechar')" type="button" value="Cancelar" />
+</div>
+<div id="div_bloqueio" style="position: absolute; width: 400px; height: 100; background: #DCDCDC; border-top: 4px solid #555555; border-bottom: 4px solid #555555;z-index: 120; padding: 10px; visibility:hidden" align="center">	
+    <h1>Atenção</h1>			
+    <blockquote>Ao bloquear um amigo, ele será retirado de todas as conversas que você criou e que eventualmente participa. Sendo assim ele não poderá lhe ajudar mais nessa e em outras conversas. Se você tem certeza que essa é a decisão a ser tomada, é necessário preencher o motivo abaixo para que o amigo saiba o porque dessa ação.</blockquote>
+	<%= form_tag('/') %>
+	<textarea id="txt_bloqueio"></textarea>
+	</form>
+	<br />
+	<input id="btnEnviarBloqueio" onclick="bloqueio('enviar')" type="button" value="Enviar" /> | 
+	<input onclick="bloqueio('fechar')" type="button" value="Cancelar" />
+</div>

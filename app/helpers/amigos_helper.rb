@@ -1,0 +1,2 @@
+module AmigosHelper
+end
