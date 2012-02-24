@@ -18,19 +18,19 @@ development:
   adapter: mysql
   database: euteajudo1
   username: euteajudo1
-  password: EuT34jud00rg
+  password: xxxxxxx
   host: mysql02.arich.com.br 
 
 test:
   adapter: mysql
   database: euteajudo1
   username: euteajudo1
-  password: EuT34jud00rg
+  password: xxxxxxx
   host: mysql02.arich.com.br 
 
 production:
   adapter: mysql
   database: euteajudo1
   username: euteajudo1
-  password: EuT34jud00rg
+  password: xxxxxxx
   host: mysql02.arich.com.br 
