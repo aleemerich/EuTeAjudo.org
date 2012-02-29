@@ -68,10 +68,10 @@ end
 ActionMailer::Base.default_content_type = "text/html"
 ActionMailer::Base.default_mime_version = "1.0"
 ActionMailer::Base.smtp_settings = {
-  :address              => "mail.euteajudo.org",
-  :port                 => 25,
+  :address              => "xxx.xxxxx.xxx",
+  :port                 => 000,
   :domain               => "euteajudo.org",
   :authentication       => :login,
-  :user_name            => "suporte@euteajudo.org",
-  :password             => "Rocha1998",
+  :user_name            => "xxxxxxxxxxxxxx",
+  :password             => "xxxxxxxxxxxx",
 }
