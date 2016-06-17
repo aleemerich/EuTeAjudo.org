@@ -1,11 +1,9 @@
-O PROJETO
-=========
+# Sobre o projeto
 
 Maiores informações sobre o projeto podem ser vistas visitando o site http://euteajudo.org
 
 
-OBJETIVO DE COMPARTILHAR
-========================
+## OBJETIVO DE COMPARTILHAR
 
 O site foi criado em Ruby on Rails e MySQL inicialmente por Alessandro Rocha Emerich (alemerich). Contudo há muito o que evoluir pois o programador ainda é neófito na programação em Rails.
 
@@ -17,16 +15,14 @@ Esse é outro objetivo dessa publicação, pedir ajuda aos mais experientes para
 
 
 
-ALGUMAS CONSIDERAÇÕES
-=====================
+## ALGUMAS CONSIDERAÇÕES
 
 - Como o site atende a pessoas aflitas, as publicações contidas no banco de dados são sensíveis, uma vez que expõe dados sensíveis dos usuários e permitem a identificação de quem fez as postagens. Por isso, a senha de acesso ao banco de dados em produção foi retirada até se definir como será o processo de melhoria-publicação.
 - Na pasta /DOC há o script completo do banco de dados que está hoje em produção, tendo em vista que ele não contem nenhum cadastro pelos mesmos motivos citados no item anterior.
 - As publicações aqui feitas ainda precisaram ser testas e publicadas diretamente pelo autor do site até que sejam criados os novos procedimentos e uma forma de descentralização.
 
 
-QUEM QUISER AJUDAR
-==================
+## QUEM QUISER AJUDAR
 
 Entre em contato pelo e-mail:
 suporte@euteajudo.org
