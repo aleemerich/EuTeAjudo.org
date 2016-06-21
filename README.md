@@ -5,7 +5,7 @@ Para você entender melhor o projeto e seu objetivo, visite o site http://euteaj
 
 ## Porque compartilhar o código?
 
-O site foi criado em Ruby on Rails e MySQL inicialmente por Alessandro Rocha Emerich (alemerich). Contudo há muito o que evoluir pois o programador ainda é neófito na programação em Rails.
+O site foi criado em Ruby on Rails e MySQL inicialmente. Contudo há muito o que evoluir pois o programador ainda é neófito na programação em Rails.
 
 Por isso, o objetivo de publicar todo o código aqui no GITHUB é chamar outros programadores para evoluir o sistema e assim poder ajudar ainda mais a aqueles que precisam e estão sendo ajudados pelo site. Também tem a finalidade de descentralizar o sistema, permitindo assim que um grupo de pessoas possam deixar o sistema sempre em pleno funcionamento.
 
